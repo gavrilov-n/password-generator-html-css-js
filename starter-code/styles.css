@@ -1,0 +1,193 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+@font-face {
+    font-family: "JetBrains Mono";
+    src: url("./assets/fonts/JetBrainsMono-VariableFont_wght.ttf");
+    font-weight: 100 800;
+    font-style: normal;
+}
+
+:root{
+    /* Grey colors */
+    --grey-200: #E6E5EA;
+    --grey-600: #817D92;
+    --grey-700: #54535B;
+    --grey-800: #24232C;
+    --grey-850: #18171F;
+    --grey-900: #14131B;
+    --grey-950: #08070B;
+
+    /* Green */
+    --green-200: #A4FFAF;
+
+    /* Yellow */
+    --yellow-300: #F8CD65;
+
+    /* Orange */
+    --orange-400: #FB7C58;
+
+    /* Red */
+    --red-500: #F64A4A;
+}
+
+body {
+    height: 100vh;
+    font-family: "JetBrains Mono", sans-serif;
+    background-image: linear-gradient(to right, #14131B, #08070B);
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Text fields */
+.title {
+    color: var(--grey-600);
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 2.4rem;
+    margin-bottom: 1.6rem;
+}
+.password-text {
+    color: var(--grey-200);
+    font-size: 2.4rem;
+    line-height: 3.2rem;
+
+}
+
+.copied-text {
+    color: var(--green-200);
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    text-transform: uppercase;
+}
+
+.character-length {
+    color: var(--grey-200);
+    font-size: 1.6rem;
+}
+
+.character-length-nr {
+    color: var(--green-200);
+    font-size: 2.4rem;
+}
+
+.strength-check__text {
+    color: var(--grey-600);
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.strength-check__eval-text {
+    color: var(--grey-200);
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+/* Main Card */ 
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Password section */
+.password-section,
+.password-generations-section{
+    background-color: var(--grey-800);
+}
+
+.password-section {
+    width: 34.3rem;
+    padding: 1.6rem;
+    margin-bottom: 1.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.copy-field {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Main Action Field */ 
+.password-generations-section {
+    width: 34.3rem;
+    padding: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+/* Form and Check boxes */
+
+.form {
+    font-size: 1.6rem;
+    color: var(--grey-200);
+    margin: 2.4rem 0rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Strength check field */
+.strength-check {
+    background-color: var(--grey-850);
+    text-transform: uppercase;
+    display: flex;
+    padding: 1.6rem;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.6rem;
+}
+
+.strength-check__eval {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.strength-bar{
+    border: 0.2rem solid var(--grey-200);
+    width: 1rem;
+    height: 2.8rem;
+}
+.strength-bars {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Button */
+.btn {
+    display: flex;
+    align-items: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    font-family: inherit;
+    font-weight: 400;
+    font-size: 1.6rem;
+    background-color: var(--green-200);
+    border: none;
+    min-height: 5.6rem;
+    text-transform: uppercase;
+}
+
+/* Unified classes */
+.character-length-row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

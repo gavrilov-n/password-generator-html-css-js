@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Password generator app</title>
+  </head>
+  <body>
+    <section class="card">
+      <h1 class="title">Password Generator</h1>
+      <div class="password-section">
+        <h2 class="password-text">P4$5W0rD!</h2>
+        <div class="copy-field">
+          <h3 class="copied-text">Copied</h3>
+          <img src="./assets/images/icon-copy.svg" alt="" />
+        </div>
+      </div>
+      <div class="password-generations-section">
+        <div class="length-field">
+          <div class="character-length-row">
+            <p class="character-length">Character Length</p>
+            <div class="character-length-nr">0</div>
+          </div>
+          
+          <div class="slidecontainer">
+            <input
+              type="range"
+              min="1"
+              max="32"
+              value="16"
+              class="slider"
+              id="myRange"
+            />
+          </div>
+        </div>
+        <form class="form">
+          <div class="checkbox-row">
+            <input type="checkbox" name="uppercase" id="uppercase" />
+          <label for="uppercase">Include Uppercase Letters</label>
+          </div>
+          <div class="checkbox-row">
+            <input type="checkbox" name="lowercase" id="lowercase" />
+            <label for="lowercase">Include Lowercase Letters</label>
+          </div>
+          <div class="checkbox-row">
+            <input type="checkbox" name="numbers" id="numbers" />
+            <label for="numbers">Include Numbers</label>
+          </div>
+          <div class="checkbox-row">
+            <input type="checkbox" name="symbols" id="symbols" />
+            <label for="symbols">Include Symbols</label>
+          </div>
+          
+        </form>
+        <div class="strength-check">
+          <h3 class="strength-check__text">Strength</h3>
+          <div class="strength-check__eval">
+            <div class="strength-check__eval-text">Medium</div>
+            <div class="strength-bars">
+              <div class="strength-bar"></div>
+              <div class="strength-bar"></div>
+              <div class="strength-bar"></div>
+              <div class="strength-bar"></div>
+            </div>
+          </div>
+        </div>
+        <button class="btn">Generate <img src="./assets/images/icon-arrow-right.svg"></button>
+      </div>
+    </section>
+  </body>
+</html>
