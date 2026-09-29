@@ -27,24 +27,23 @@
         <div class="length-field">
           <div class="character-length-row">
             <p class="character-length">Character Length</p>
-            <div class="character-length-nr">0</div>
+            <div class="character-length-nr" id="nr-password-char"></div>
           </div>
-          
-          <div class="slidecontainer">
+          <div class="slide-container">
             <input
               type="range"
               min="1"
               max="32"
               value="16"
               class="slider"
-              id="myRange"
+              id="passwordRange"
             />
           </div>
         </div>
         <form class="form">
           <div class="checkbox-row">
             <input type="checkbox" name="uppercase" id="uppercase" />
-          <label for="uppercase">Include Uppercase Letters</label>
+            <label for="uppercase">Include Uppercase Letters</label>
           </div>
           <div class="checkbox-row">
             <input type="checkbox" name="lowercase" id="lowercase" />
@@ -58,7 +57,6 @@
             <input type="checkbox" name="symbols" id="symbols" />
             <label for="symbols">Include Symbols</label>
           </div>
-          
         </form>
         <div class="strength-check">
           <h3 class="strength-check__text">Strength</h3>
@@ -72,8 +70,11 @@
             </div>
           </div>
         </div>
-        <button class="btn">Generate <img src="./assets/images/icon-arrow-right.svg"></button>
+        <button class="btn">
+          Generate <img src="./assets/images/icon-arrow-right.svg" />
+        </button>
       </div>
     </section>
   </body>
+  <script src="./main.js"></script>
 </html>
