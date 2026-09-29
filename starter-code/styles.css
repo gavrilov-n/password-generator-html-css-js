@@ -58,7 +58,7 @@ body {
   margin-bottom: 1.6rem;
 }
 .password-text {
-  color: var(--grey-200);
+  color: var(--grey-700);
   font-size: 2.4rem;
   line-height: 3.2rem;
 }
@@ -102,7 +102,7 @@ body {
 /* Password section */
 .password-section,
 .password-generations-section {
-  background-color: var(--grey-800);
+  background-color: var(--grey-850);
 }
 
 .password-section {
@@ -193,7 +193,7 @@ input[type="checkbox"]:checked {
 
 /* Strength check field */
 .strength-check {
-  background-color: var(--grey-850);
+  background-color: var(--grey-900);
   text-transform: uppercase;
   display: flex;
   padding: 1.6rem;
@@ -256,15 +256,15 @@ input[type="checkbox"]:checked {
   justify-content: space-between;
 }
 
-/* Tablet */
-@media (min-width: 767px) and (max-width: 1439px) {
+/* Tablet/Desktop */
+@media (min-width: 767px) {
   .password-section,
   .password-generations-section {
     width: 540px;
     padding: 1.6rem;
   }
-  .password-generations-section{
-    padding: 32px
+  .password-generations-section {
+    padding: 32px;
   }
   .password-section {
     height: 80px;
@@ -278,5 +278,45 @@ input[type="checkbox"]:checked {
   }
   .strength-check {
     margin-bottom: 32px;
+    padding: 32px;
+    height: 72px;
   }
+  /* Text */
+  .title {
+    font-size: 24px;
+    line-height: 32px;
+  }
+  .password-text {
+    font-size: 32px;
+    line-height: 42px;
+  }
+
+  .copied-text {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .character-length {
+    font-size: 18px;
+  }
+
+  .character-length-nr {
+    font-size: 32px;
+    line-height: 32px;
+  }
+
+  .strength-check__text {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .strength-check__eval-text {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .btn {
+  font-size: 18px;
+  line-height: 24px;
+}
 }
