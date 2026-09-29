@@ -1,8 +1,8 @@
-let slider = document.getElementById("passwordRange");
-let output = document.getElementById("nr-password-char");
+// Variables
+let slider = document.getElementById("passwordRange"); // Slider
+let output = document.getElementById("nr-password-char"); // Character length text
 
-output.innerHTML = slider.value;
+// Changing character length with slider
+output.textContent = slider.value;
 
-slider.oninput = function() {
-    output.innerHTML = this.value;
-}
+slider.addEventListener("input", () => (output.textContent = slider.value));
