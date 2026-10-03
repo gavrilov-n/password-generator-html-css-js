@@ -63,6 +63,12 @@ body {
   line-height: 3.2rem;
 }
 
+.password-text-generated {
+  color: var(--grey-200);
+  font-size: 2.4rem;
+  line-height: 3.2rem;
+}
+
 .copied-text {
   color: var(--green-200);
   font-size: 1.6rem;
@@ -316,7 +322,12 @@ input[type="checkbox"]:checked {
   }
 
   .btn {
-  font-size: 18px;
-  line-height: 24px;
-}
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .password-text-generated {
+    color: var(--grey-200);
+    font-size: 2.4rem;
+    line-height: 3.2rem;
+  }
 }
