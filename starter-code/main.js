@@ -8,6 +8,8 @@ const inlcudeNumbersElement = document.getElementById("numbers"); // Numbers che
 const inlcudeSymbolsElement = document.getElementById("symbols"); // Symbols checkbox
 const generateBtn = document.getElementById("btn"); // Generate button
 const passwordDisplay = document.getElementById("password-display"); // Password area
+const copyBtn = document.getElementById("copy"); // Copy button
+const copyText = document.getElementById("copy-text"); // Copy text
 
 // Character arrays
 let UPPERCASE_ARR = generateCharactersLowToHigh(65, 90);
@@ -21,8 +23,10 @@ let SYMBOLS_ARR = generateCharactersLowToHigh(33, 46)
 // Changing character length with slider
 output.textContent = slider.value;
 
-slider.addEventListener("input", () => (output.textContent = slider.value));
-
+slider.addEventListener("input", () => {
+  output.textContent = slider.value;
+  fillSliderBackground();
+});
 // Generate Password button
 generateBtn.addEventListener("click", () => {
   const characterAmount = slider.value;
@@ -69,6 +73,21 @@ function generatePassword(
   return passwordChars.join("");
 }
 
+// Copy button
+copyBtn.addEventListener("click", () => {
+  const targetElement = document.querySelector(copyBtn.dataset.copy);
+  const textToCopy = targetElement.textContent;
+  console.log(textToCopy);
+  navigator.clipboard.writeText(textToCopy).then(() => {
+    copyText.classList.remove("non-display");
+    copyText.classList.add("copied-text");
+    setTimeout(() => {
+      copyText.classList.remove("copied-text");
+      copyText.classList.add("non-display");
+    }, 2000);
+  });
+});
+
 // Get all charcodes function
 function generateCharactersLowToHigh(low, high) {
   let arr = [];
@@ -76,4 +95,16 @@ function generateCharactersLowToHigh(low, high) {
     arr.push(i);
   }
   return arr;
+}
+
+//
+function fillSliderBackground() {
+  let valuePercentage = (slider.value / slider.max) * 100;
+  let color =
+    "linear-gradient(90deg, var(--green-200) " +
+    valuePercentage +
+    "%, var(--grey-950) " +
+    valuePercentage +
+    "%)";
+  slider.style.background = color;
 }

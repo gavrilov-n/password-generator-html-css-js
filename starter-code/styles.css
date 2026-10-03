@@ -137,7 +137,7 @@ body {
   -webkit-appearance: none;
   width: 100%;
   height: 0.8rem;
-  background: var(--green-200);
+  background: linear-gradient(90deg, var(--green-200) 40%, var(--grey-950) 50%);
   outline: none;
 }
 
@@ -234,6 +234,18 @@ input[type="checkbox"]:checked {
 }
 
 /* Button */
+.copy {
+  background: none;
+  border: none;
+  color: var(--green-200);
+}
+
+.copy:hover {
+  cursor: pointer;
+}
+.copy:active {
+  color: var(--grey-200);
+}
 .btn {
   display: flex;
   flex-direction: row;
@@ -260,6 +272,10 @@ input[type="checkbox"]:checked {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.non-display { 
+  display: none;
 }
 
 /* Tablet/Desktop */
