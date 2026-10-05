@@ -89,7 +89,6 @@ function generatePassword(
   return passwordChars.join("");
 }
 
-// Score length + variety, then map the score to exactly one level
 function getStrength(length, typeCount) {
   let lengthPoints = 0;
   if (length >= 12) {
@@ -113,7 +112,6 @@ function getStrength(length, typeCount) {
   }
 }
 
-// Reset all bars, then fill the first N with the level's color
 function updateStrengthMeter(strength) {
   bars.forEach((bar, index) => {
     bar.classList.remove(

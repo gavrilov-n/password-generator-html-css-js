@@ -1,22 +1,25 @@
-# Frontend Mentor - Password generator app
+# Frontend Mentor - Password generator app solution
 
-![Design preview for the Password generator app coding challenge](./preview.jpg)
+This is a solution to the [Password generator app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/password-generator-app-Mr8CLycqjh). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Welcome! 👋
+## Table of contents
 
-Thanks for purchasing this premium Frontend Mentor coding challenge.
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Useful resources](#useful-resources)
+  - [AI Collaboration](#ai-collaboration)
+- [Author](#author)
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects. These premium challenges are perfect portfolio pieces, so please feel free to use what you create in your portfolio to show others.
+## Overview
 
-**To do this challenge, you need a strong understanding of HTML, CSS, and JavaScript.**
+### The challenge
 
-## The challenge
-
-Your challenge is to build out this password generator app and get it looking as close to the design as possible.
-
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
-
-Your users should be able to:
+Users should be able to:
 
 - Generate a password based on the selected inclusion options
 - Copy the generated password to the computer's clipboard
@@ -24,83 +27,141 @@ Your users should be able to:
 - View the optimal layout for the interface depending on their device's screen size
 - See hover and focus states for all interactive elements on the page
 
-### Want some support on the challenge?
+### Screenshot
 
-[Join our community](https://www.frontendmentor.io/community) and ask questions in the **#help** channel.
+![1791189568669](image/README-template/1791189568669.png)
 
-## Where to find everything
+*Desktop*
 
-Your task is to build out the project to the design file provided. You can download the Figma design file on the platform. **Please be sure not to share the Figma design file with anyone else.** The design download comes with a `README.md` file as well to help you get set up.
+![1791189599423](image/README-template/1791189599423.png)
 
-All the required assets for this project are in the `/assets` folder. The images are already exported for the correct screen size and optimized. Some are reusable at multiple screen sizes. So if you don't see an image in a specific folder, it will typically be in another folder for that page.
+*Mobile*
 
-We also include variable and static font files for the required fonts for this project. You can choose to either link to Google Fonts or use the local font files to host the fonts yourself. Note that we've removed the static font files for the font weights that aren't needed for this project.
+![1791189674476](image/README-template/1791189674476.png)
 
-The design system in the design file will give you more information about the various colors, fonts, and styles used in this project. Our fonts always come from [Google Fonts](https://fonts.google.com/).
+*Active states*
 
-## Using AI coding assistants
+### Links
 
-We've included two files to help you if you're using AI coding assistants (like Claude, GitHub Copilot, Cursor, etc.) while working on this challenge:
+- Live Site URL: [zippy-crisp-da3bbe.netlify.app](https://zippy-crisp-da3bbe.netlify.app)
 
-- `AGENTS.md` - Contains detailed instructions for AI assistants on how to help you with this challenge. It's tailored to this challenge's difficulty level, so the AI will provide guidance appropriate to your learning stage—offering more support for beginner challenges and encouraging more independence on advanced ones.
-- `CLAUDE.md` - A pointer file that directs Claude-based tools to the AGENTS.md instructions.
+## My process
 
-**How to use them:** You don't need to do anything! These files are automatically detected by most AI coding tools. The AI will read them and adjust its behavior to be a better learning partner—guiding you toward solutions rather than just giving you the answers.
+### Built with
 
-**Note:** These files are designed to help you *learn*, not to do the work for you. The AI is instructed to ask questions, give hints, and explain concepts rather than writing complete solutions.
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- Vanilla JavaScript
+- Mobile-first workflow
 
-## Building your project
+### What I learned
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
+I managed to practice a lot of JavaScript concepts with this project, from changing states to dynamic styling. I'm very proud of implementing the copy functionality, which makes the website not only a practice project but also something useful in practice.
 
-1. Separate the `starter-code` from the rest of this project and rename it to something meaningful for you. Initialize the codebase as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/). **⚠️ IMPORTANT ⚠️: There are already a couple of `.gitignore` files in this project. Please do not remove them or change the content of the files. If you create a brand new project, please use the `.gitignore` files provided in your new codebase. This is to avoid the accidental upload of the Figma design file to GitHub. With these premium challenges, please be sure not to share the Figma design file in your GitHub repo. Thanks!**
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+```js
+// Copy button
+copyBtn.addEventListener("click", () => {
+  const targetElement = document.querySelector(copyBtn.dataset.copy);
+  const textToCopy = targetElement.textContent;
+  console.log(textToCopy);
+  navigator.clipboard.writeText(textToCopy).then(() => {
+    copyText.classList.remove("non-display");
+    copyText.classList.add("copied-text");
+    setTimeout(() => {
+      copyText.classList.remove("copied-text");
+      copyText.classList.add("non-display");
+    }, 2000);
+  });
+});
+```
 
-## Deploying your project
+The hardest part of this project for me was implementing the dynamic strength checker. I created two helper functions for it. The first one, `getStrength`, takes two parameters: `length` and `typeCount`, which are the length of the password and the number of checked checkboxes, respectively. Depending on the password length, I assign a different number of `lengthPoints`. Then I add the length points to the number of checked checkboxes to get a final score, which I store in the `score` variable. Depending on the score, I return a different object with `label`, `bars` and `color` properties.
 
-As mentioned above, there are many ways to host your project for free. Our recommended hosts are:
+Next, I pass the object from `getStrength` to `updateStrengthMeter` as an argument. For each bar, I remove the styling classes so that only the basic unfilled bars remain. Whenever `index < strength.bars` is true, I add the styling class based on the argument's color. After that, I set the text from `strength.label`.
 
-- [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
+```javascript
+// Copy button
+function getStrength(length, typeCount) {
+  let lengthPoints = 0;
+  if (length >= 12) {
+    lengthPoints = 3;
+  } else if (length >= 8) {
+    lengthPoints = 2;
+  } else if (length >= 6) {
+    lengthPoints = 1;
+  }
 
-You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://www.frontendmentor.io/guides/hosting-your-solution).
+  const score = lengthPoints + typeCount;
 
-## Create a custom `README.md`
+  if (score >= 6) {
+    return { label: "Strong", bars: 4, color: "green" };
+  } else if (score >= 4) {
+    return { label: "Medium", bars: 3, color: "yellow" };
+  } else if (score >= 2) {
+    return { label: "Weak", bars: 2, color: "orange" };
+  } else {
+    return { label: "Too Weak!", bars: 1, color: "red" };
+  }
+}
 
-We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
+function updateStrengthMeter(strength) {
+  bars.forEach((bar, index) => {
+    bar.classList.remove(
+      "strength-bar-green",
+      "strength-bar-yellow",
+      "strength-bar-orange",
+      "strength-bar-red",
+    );
+    if (index < strength.bars) {
+      bar.classList.add(`strength-bar-${strength.color}`);
+    }
+  });
+  strengthText.innerText = strength.label;
+}
+```
 
-The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
+I also learned how to style a slider that changes its background color.
 
-Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
+```CSS
+.slider {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 0.8rem;
+  background: linear-gradient(90deg, var(--green-200) 40%, var(--grey-950) 50%);
+  outline: none;
+}
 
-## Submitting your solution
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 2.8rem;
+  height: 2.8rem;
+  background: white;
+  border-radius: 5rem;
+}
 
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://www.frontendmentor.io/guides/how-to-submit-solutions) for tips on how to do this.
+.slider:focus::-webkit-slider-thumb {
+  border: 0.2rem solid var(--green-200);
+  background-color: var(--grey-900);
+}
+```
 
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
+### Useful resources
 
-**⚠️ IMPORTANT ⚠️: With these premium challenges, please be sure not to upload the Figma design file to GitHub when you're submitting to the platform and sharing it around. If you've created a brand new project, the easiest way to do that is to copy across the `.gitignore` provided in this starter project.**
+- [youtu.be/Aw2NT4EDO3M?si=S-RMVtZr0w0l2NuA](https://youtu.be/Aw2NT4EDO3M?si=S-RMVtZr0w0l2NuA) - This video helped me implement the copy functionality on my web page.
+- [youtu.be/BrpiNUf2XCk?si=1xalY2EGP_8GI9nP](https://youtu.be/BrpiNUf2XCk?si=1xalY2EGP_8GI9nP) - This is an amazing video that finally helped me understand how to properly style a dynamic slider. I'd recommend it to anyone still learning this concept.
+- [youtu.be/62qN2RcpIAE?si=wlRFUKDmLuB4Sgg2](https://youtu.be/62qN2RcpIAE?si=wlRFUKDmLuB4Sgg2) - This was a very good refresher on the `classList` property.
 
-## Sharing your solution
+### AI Collaboration
 
-There are multiple places you can share your solution:
+For this project, I used GLM-5.3 to guide me through concepts I didn't know before. This helps demonstrate your ability to work effectively with AI assistants.
 
-1. Share your solution page in the **#finished-projects** channel of the [community](https://www.frontendmentor.io/community).
-2. Share on [X (formerly Twitter)](https://x.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in your post. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on [LinkedIn](https://www.linkedin.com/company/frontend-mentor/).
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
+- OpenCode with GLM-5.3
+- Used mainly for debugging and asking questions about common implementation patterns
+- It gave me useful suggestions, but sometimes I wanted to take a different approach from the one the model suggested. However, the model wasn't flexible enough to adapt to my solution and kept changing it.
 
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback.
+## Author
 
-The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
-
-## Got feedback for us?
-
-We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi[at]frontendmentor[dot]io.
-
-**Have fun building!** 🚀
+- Frontend Mentor - [www.frontendmentor.io/profile/gavrilov-n](https://www.frontendmentor.io/profile/gavrilov-n)
+- LinkedIn - [www.linkedin.com/in/nikita-gavrilov1337/?isSelfProfile=true](https://www.linkedin.com/in/nikita-gavrilov1337/?isSelfProfile=true)

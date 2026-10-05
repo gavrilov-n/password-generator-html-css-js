@@ -259,8 +259,7 @@ input[type="checkbox"]:checked {
 .copy:active {
   color: var(--grey-200);
 }
-.btn {
-  display: flex;
+.btn { display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
