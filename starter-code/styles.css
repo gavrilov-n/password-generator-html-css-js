@@ -269,6 +269,7 @@ input[type="checkbox"]:checked {
   font-weight: 400;
   font-size: 1.6rem;
   background-color: var(--green-200);
+  color: var(--grey-950);
   min-height: 5.6rem;
   text-transform: uppercase;
   border: transparent;
