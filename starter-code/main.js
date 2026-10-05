@@ -11,6 +11,12 @@ const passwordDisplay = document.getElementById("password-display"); // Password
 const copyBtn = document.getElementById("copy"); // Copy button
 const copyText = document.getElementById("copy-text"); // Copy text
 
+const barOne = document.getElementById("bar1");
+const barTwo = document.getElementById("bar2");
+const barThree = document.getElementById("bar3");
+const barFour = document.getElementById("bar4");
+const strengthText = document.getElementById("strength-text");
+const bars = [barOne, barTwo, barThree, barFour];
 // Character arrays
 let UPPERCASE_ARR = generateCharactersLowToHigh(65, 90);
 let LOWERCASE_ARR = generateCharactersLowToHigh(97, 122);
@@ -31,12 +37,14 @@ slider.addEventListener("input", () => {
 generateBtn.addEventListener("click", () => {
   const characterAmount = slider.value;
   const includeUpperCase = includeUppercaseElement.checked;
+  const includeLowerCase = inlcudeLowercaseElement.checked;
   const inlcudeSymbols = inlcudeSymbolsElement.checked;
   const inlcudeNumbers = inlcudeNumbersElement.checked;
 
   const password = generatePassword(
     characterAmount,
     includeUpperCase,
+    includeLowerCase,
     inlcudeNumbers,
     inlcudeSymbols,
     inlcudeNumbers,
@@ -50,18 +58,26 @@ generateBtn.addEventListener("click", () => {
 function generatePassword(
   characterAmount,
   includeUppercaseElement,
+  includeLowercaseElement,
   inlcudeNumbersElement,
   inlcudeSymbolsElement,
 ) {
+  let strengthCounter = 0;
   let charCodes = LOWERCASE_ARR;
   if (includeUppercaseElement) {
     charCodes = charCodes.concat(UPPERCASE_ARR);
+    strengthCounter += 1;
+  }
+  if (includeLowercaseElement) {
+    strengthCounter += 1;
   }
   if (inlcudeNumbersElement) {
     charCodes = charCodes.concat(NUMBERS_ARR);
+    strengthCounter += 1;
   }
   if (inlcudeSymbolsElement) {
     charCodes = charCodes.concat(SYMBOLS_ARR);
+    strengthCounter += 1;
   }
   const passwordChars = [];
   for (let i = 0; i < characterAmount; i++) {
@@ -69,8 +85,48 @@ function generatePassword(
       charCodes[Math.floor(Math.random() * charCodes.length)];
     passwordChars.push(String.fromCharCode(characterCode));
   }
-  console.log(passwordChars);
+  updateStrengthMeter(getStrength(Number(characterAmount), strengthCounter));
   return passwordChars.join("");
+}
+
+// Score length + variety, then map the score to exactly one level
+function getStrength(length, typeCount) {
+  let lengthPoints = 0;
+  if (length >= 12) {
+    lengthPoints = 3;
+  } else if (length >= 8) {
+    lengthPoints = 2;
+  } else if (length >= 6) {
+    lengthPoints = 1;
+  }
+
+  const score = lengthPoints + typeCount;
+
+  if (score >= 6) {
+    return { label: "Strong", bars: 4, color: "green" };
+  } else if (score >= 4) {
+    return { label: "Medium", bars: 3, color: "yellow" };
+  } else if (score >= 2) {
+    return { label: "Weak", bars: 2, color: "orange" };
+  } else {
+    return { label: "Too Weak!", bars: 1, color: "red" };
+  }
+}
+
+// Reset all bars, then fill the first N with the level's color
+function updateStrengthMeter(strength) {
+  bars.forEach((bar, index) => {
+    bar.classList.remove(
+      "strength-bar-green",
+      "strength-bar-yellow",
+      "strength-bar-orange",
+      "strength-bar-red",
+    );
+    if (index < strength.bars) {
+      bar.classList.add(`strength-bar-${strength.color}`);
+    }
+  });
+  strengthText.innerText = strength.label;
 }
 
 // Copy button
@@ -97,7 +153,7 @@ function generateCharactersLowToHigh(low, high) {
   return arr;
 }
 
-//
+// change slider background color
 function fillSliderBackground() {
   let valuePercentage = (slider.value / slider.max) * 100;
   let color =
